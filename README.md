@@ -1,44 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# metrobot_dashboard
+React JS Dashboard for the Metrobot research projet. 
 
-## Available Scripts
+## Stack
+- `create-react-app`
+- Typescript
+- Recoil for State Management
+- Styled Components (CSS in JS)
+- Chakra UI Component Library
+- `eslint` with `prettier`
+- `husky` to prevent bad commits
+- CI with Github Actions
 
-In the project directory, you can run:
+## Guidelines for Development
+I've structured the omponent structure using a modified version of the Atomic design methadology for React. You can read more about atomic design theory [here](https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262). Note that I don't use templates. As a brief overview:
 
-### `npm start`
+#### `atoms`
+Very small components (buttons, toggles, etc.). Most of these are provided by Chakra already
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### `molecules`
+They are the composition of one or more components of atoms. Here we begin to compose complex components and reuse some of those components. Molecules can have their own properties and create functionalities by using atoms, which don’t have any function or action by themselves.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### `organisms`
+Organisms are the combination of molecules that work together or even with atoms that compose more elaborate interfaces. At this level, the components begin to have the final shape, but they are still ensured to be independent, portable, and reusable enough to be reusable in any content.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### `pages`
+Pages are the navigate parts of the application and it’s where the components are distributed in one specific template. The components get real content and they’re connected with the whole application. At this stage, we can test the efficiency of the design system to analyze if all the components are independent enough or if we need to split them into smaller parts.
