@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading } from '@chakra-ui/core';
 import { NavLink } from 'react-router-dom';
+import NavbarRight from '../molecules/navbar-right';
 
 const Navbar: React.FC = () => (
   <Flex
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => (
         <Heading size="lg">Metrobot</Heading>
       </NavLink>
     </Flex>
-    <Box>Other info</Box>
+    <NavbarRight />
   </Flex>
 );
 
