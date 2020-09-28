@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box, Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading } from '@chakra-ui/core';
 import { NavLink } from 'react-router-dom';
+import NavbarRight from '../molecules/navbar-right';
 
 const Navbar: React.FC = () => (
   <Flex
-    borderWidth="1px"
+    borderBottom="1px"
+    borderBottomColor="gray.300"
     w="100%"
     p={4}
     justifyContent="space-between"
@@ -15,7 +17,7 @@ const Navbar: React.FC = () => (
         <Heading size="lg">Metrobot</Heading>
       </NavLink>
     </Flex>
-    <Box>Other info</Box>
+    <NavbarRight />
   </Flex>
 );
 

@@ -1,5 +1,5 @@
 # metrobot_dashboard
-React JS Dashboard for the Metrobot research projet. 
+React JS Dashboard for the Metrobot research project. 
 
 ## Stack
 - `create-react-app`
@@ -12,7 +12,9 @@ React JS Dashboard for the Metrobot research projet.
 - CI with Github Actions
 
 ## Guidelines for Development
-I've structured the omponent structure using a modified version of the Atomic design methadology for React. You can read more about atomic design theory [here](https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262). Note that I don't use templates. As a brief overview:
+
+### Folder Structure
+I've structured the component structure using a modified version of the Atomic design methadology for React. You can read more about atomic design theory [here](https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262). Note that I don't use templates. As a brief overview:
 
 #### `atoms`
 Very small components (buttons, toggles, etc.). Most of these are provided by Chakra already

@@ -10,6 +10,8 @@ const CustomTheme = {
       700: '#2a69ac',
     },
   },
+  useSystemColorMode: false,
+  initialColorMode: 'dark',
 };
 
 export default CustomTheme;
