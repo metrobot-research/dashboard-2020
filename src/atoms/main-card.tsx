@@ -1,11 +1,16 @@
-import React from 'react';
-import { Box } from '@chakra-ui/core';
+import React, { FC, ReactElement } from 'react';
+import { Box, Flex } from '@chakra-ui/core';
 
 interface Props {
-  cardTitle: string;
+  cardTitle?: string;
+  HeaderComponent?: ReactElement;
 }
 
-const MainCard: React.FC<Props> = ({ children, cardTitle }) => {
+const MainCard: React.FC<Props> = ({
+  children,
+  cardTitle,
+  HeaderComponent,
+}) => {
   return (
     <Box
       borderWidth="1px"
@@ -16,9 +21,17 @@ const MainCard: React.FC<Props> = ({ children, cardTitle }) => {
       width="100%"
       height="100%"
     >
-      <Box mt="1" fontWeight="semibold" fontSize="medium" as="h3">
+      <Flex
+        mt="1"
+        justifyContent="space-between"
+        fontWeight="semibold"
+        fontSize="medium"
+        direction="row"
+        as="h3"
+      >
         {cardTitle}
-      </Box>
+        {HeaderComponent !== null ? HeaderComponent : <Box />}
+      </Flex>
       {children}
     </Box>
   );

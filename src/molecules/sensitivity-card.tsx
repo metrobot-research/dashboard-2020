@@ -8,10 +8,11 @@ import {
   Heading,
   Center,
 } from '@chakra-ui/core';
+import MainCard from '../atoms/main-card';
 
 const SensitivityCard: React.FC = () => {
   return (
-    <Box>
+    <MainCard cardTitle="Joystick">
       <Box h={10} />
       <Slider defaultValue={50} mb={2}>
         <SliderTrack>
@@ -36,7 +37,7 @@ const SensitivityCard: React.FC = () => {
           Rotational
         </Heading>
       </Center>
-    </Box>
+    </MainCard>
   );
 };
 
