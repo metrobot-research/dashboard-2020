@@ -9,7 +9,7 @@ import {
   Center,
 } from '@chakra-ui/core';
 
-const SensitivityCard = () => {
+const SensitivityCard: React.FC = () => {
   return (
     <Box>
       <Box h={10} />

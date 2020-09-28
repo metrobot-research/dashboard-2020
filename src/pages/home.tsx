@@ -3,6 +3,7 @@ import { Box, Grid } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import MainCard from '../atoms/main-card';
 import SensitivityCard from '../molecules/sensitivity-card';
+import JoystickCard from '../molecules/joystick-card';
 
 const CardContainer = styled(Box)``;
 
@@ -39,8 +40,8 @@ const cards: CardsInfo[] = [
     gridArea: 'rightTop',
   },
   {
-    component: TestComponent,
-    title: 'Test',
+    component: JoystickCard,
+    title: 'Joystick',
     gridArea: 'rightBottom',
   },
 ];
