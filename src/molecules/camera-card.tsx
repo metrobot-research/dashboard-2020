@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Select, Box, Image, Flex } from '@chakra-ui/core';
+import { Select, Box, Image } from '@chakra-ui/core';
 import MainCard from '../atoms/main-card';
 
 const CameraCard: React.FC = () => {
@@ -8,8 +8,8 @@ const CameraCard: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentCamera, setCurrentCamera] = useState(cameras[0]);
 
-  const onChangeCamera = (d: any) => {
-    console.log(d.currentTarget.value);
+  const onChangeCamera = (d: any): void => {
+    // console.log(d.currentTarget.value);
     setCurrentCamera(d.currentTarget.value);
   };
 

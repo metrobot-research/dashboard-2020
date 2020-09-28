@@ -5,8 +5,9 @@ import { IJoystickUpdateEvent } from 'react-joystick-component/build/lib/Joystic
 import MainCard from '../atoms/main-card';
 
 const JoystickCard: React.FC = () => {
-  const handleMove = (data: IJoystickUpdateEvent) => {
-    console.log(data);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleMove = (data: IJoystickUpdateEvent): void => {
+    // console.log(data);
   };
 
   return (
