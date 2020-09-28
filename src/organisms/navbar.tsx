@@ -5,7 +5,8 @@ import NavbarRight from '../molecules/navbar-right';
 
 const Navbar: React.FC = () => (
   <Flex
-    borderWidth="1px"
+    borderBottom="1px"
+    borderBottomColor="gray.300"
     w="100%"
     p={4}
     justifyContent="space-between"
