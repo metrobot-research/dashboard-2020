@@ -13,7 +13,6 @@ const MainCard: React.FC<Props> = ({ children, cardTitle }) => {
       overflow="hidden"
       borderColor="gray.200"
       padding={4}
-      margin={2}
       width="100%"
       height="100%"
     >

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Box, Grid } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import MainCard from '../atoms/main-card';
+import SensitivityCard from '../molecules/sensitivity-card';
 
 const CardContainer = styled(Box)``;
 
@@ -33,8 +34,8 @@ const cards: CardsInfo[] = [
     gridArea: 'center',
   },
   {
-    component: TestComponent,
-    title: 'Test',
+    component: SensitivityCard,
+    title: 'Sensitivity',
     gridArea: 'rightTop',
   },
   {
@@ -46,6 +47,7 @@ const cards: CardsInfo[] = [
 
 const Home: React.FC = () => (
   <Grid
+    p={2}
     gridTemplateAreas="
     'leftTop center center rightTop'
     'leftBottom center center rightBottom'
@@ -55,7 +57,9 @@ const Home: React.FC = () => (
   >
     {cards.map((card) => (
       <CardContainer gridArea={card.gridArea}>
-        <MainCard cardTitle={card.title}>{card.component}</MainCard>
+        <MainCard cardTitle={card.title}>
+          <card.component />
+        </MainCard>
       </CardContainer>
     ))}
   </Grid>
