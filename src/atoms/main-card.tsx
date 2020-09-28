@@ -12,7 +12,7 @@ const MainCard: React.FC<Props> = ({
   HeaderComponent,
 }) => {
   return (
-    <Box
+    <Flex
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
@@ -20,6 +20,7 @@ const MainCard: React.FC<Props> = ({
       padding={4}
       width="100%"
       height="100%"
+      flexDirection="column"
     >
       <Flex
         mt="1"
@@ -33,7 +34,7 @@ const MainCard: React.FC<Props> = ({
         {HeaderComponent !== null ? HeaderComponent : <Box />}
       </Flex>
       {children}
-    </Box>
+    </Flex>
   );
 };
 

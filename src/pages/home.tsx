@@ -5,6 +5,7 @@ import MainCard from '../atoms/main-card';
 import SensitivityCard from '../molecules/sensitivity-card';
 import JoystickCard from '../molecules/joystick-card';
 import CameraCard from '../molecules/camera-card';
+import LogsCard from '../molecules/logs-card';
 
 const CardContainer = styled(Box)``;
 
@@ -21,7 +22,7 @@ const cards: CardsInfo[] = [
     gridArea: 'leftTop',
   },
   {
-    component: MainCard,
+    component: LogsCard,
     gridArea: 'leftBottom',
   },
   {
