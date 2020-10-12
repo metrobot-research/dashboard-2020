@@ -6,6 +6,7 @@ import SensitivityCard from '../molecules/sensitivity-card';
 import JoystickCard from '../molecules/joystick-card';
 import CameraCard from '../molecules/camera-card';
 import LogsCard from '../molecules/logs-card';
+import { useROS } from '../hooks/ros.hook';
 
 const CardContainer = styled(Box)``;
 
@@ -39,23 +40,27 @@ const cards: CardsInfo[] = [
   },
 ];
 
-const Home: React.FC = () => (
-  <Grid
-    p={2}
-    gridTemplateAreas="
+const Home: React.FC = () => {
+  const { toggleConnection } = useROS();
+  toggleConnection();
+  return (
+    <Grid
+      p={2}
+      gridTemplateAreas="
     'leftTop center center rightTop'
     'leftBottom center center rightBottom'
     "
-    gridTemplateColumns="1fr 1fr 1fr 1fr"
-    gridTemplateRows="300px 300px"
-    gridGap="10px"
-  >
-    {cards.map((card) => (
-      <CardContainer gridArea={card.gridArea}>
-        <card.component />
-      </CardContainer>
-    ))}
-  </Grid>
-);
+      gridTemplateColumns="1fr 1fr 1fr 1fr"
+      gridTemplateRows="300px 300px"
+      gridGap="10px"
+    >
+      {cards.map((card) => (
+        <CardContainer gridArea={card.gridArea} key={card.component.toString()}>
+          <card.component />
+        </CardContainer>
+      ))}
+    </Grid>
+  );
+};
 
 export default Home;

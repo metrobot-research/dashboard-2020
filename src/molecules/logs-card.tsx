@@ -69,8 +69,12 @@ const LogsCard: React.FC = () => {
         h="100%"
         overflow="scroll"
       >
-        {logs.map((log) => (
-          <Text fontSize="xs" color={logLevelToColor(log.logLevel)}>
+        {logs.map((log, index) => (
+          <Text
+            fontSize="xs"
+            color={logLevelToColor(log.logLevel)}
+            key={log.text + index}
+          >
             {log.text}
           </Text>
         ))}

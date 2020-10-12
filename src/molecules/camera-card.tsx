@@ -15,8 +15,10 @@ const CameraCard: React.FC = () => {
 
   const selectHeader = (
     <Select size="sm" width="200px" onChange={onChangeCamera}>
-      {cameras.map((a) => (
-        <option value={a}>{a}</option>
+      {cameras.map((a, index) => (
+        <option value={a} key={a + index}>
+          {a}
+        </option>
       ))}
     </Select>
   );
