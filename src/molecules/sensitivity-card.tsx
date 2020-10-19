@@ -1,37 +1,36 @@
 import React from 'react';
-import {
-  Slider,
-  SliderTrack,
-  SliderThumb,
-  SliderFilledTrack,
-  Box,
-  Heading,
-  Center,
-} from '@chakra-ui/core';
+import { Box, Heading, Center } from '@chakra-ui/core';
+import ROSLIB from 'roslib';
 import MainCard from '../atoms/main-card';
+import { useROS } from '../hooks/ros.hook';
+import SensitivitySlider from '../atoms/sensitivity-slider';
 
 const SensitivityCard: React.FC = () => {
+  const { getTopic, isConnected } = useROS();
+  let sensitivityTopic: ROSLIB.Topic;
+
+  if (isConnected) {
+    sensitivityTopic = getTopic('/sensitivity', 'std_msgs/UInt8');
+  }
+
+  const sendSensitivityUpdate = (sensitivity: number): void => {
+    const sensitivityMessage: ROSLIB.Message = {
+      data: sensitivity,
+    };
+    sensitivityTopic.publish(sensitivityMessage);
+  };
+
   return (
     <MainCard cardTitle="Joystick">
       <Box h={10} />
-      <Slider defaultValue={50} mb={2}>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
+      <SensitivitySlider onChange={sendSensitivityUpdate} />
       <Center>
         <Heading size="sm" fontWeight="regular">
           Forward/Backwards
         </Heading>
       </Center>
       <Box h={5} />
-      <Slider defaultValue={50} mb={2}>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
+      <SensitivitySlider onChange={sendSensitivityUpdate} />
       <Center>
         <Heading size="sm" fontWeight="regular">
           Rotational

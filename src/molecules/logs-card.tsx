@@ -1,11 +1,8 @@
 import React from 'react';
 import { Box, Text } from '@chakra-ui/core';
 import MainCard from '../atoms/main-card';
-
-interface Log {
-  text: string;
-  logLevel: 'info' | 'warn' | 'error';
-}
+import { useROS } from '../hooks/ros.hook';
+import { Message } from '../hooks/ROSContext';
 
 const logLevelToColor = (logLevel: string): string => {
   switch (logLevel) {
@@ -21,43 +18,7 @@ const logLevelToColor = (logLevel: string): string => {
 };
 
 const LogsCard: React.FC = () => {
-  const logs: Log[] = [
-    {
-      text:
-        "Apr 11 10:32:22 router1 mgd[3606]: UI_DBASE_LOGOUT_EVENT: User 'barbara' exiting configuration mode",
-      logLevel: 'info',
-    },
-    {
-      text:
-        "Apr 11 10:32:22 router1 mgd[3606]: UI_DBASE_LOGOUT_EVENT: User 'barbara' exiting configuration mode",
-      logLevel: 'info',
-    },
-    {
-      text:
-        'Apr 11 11:46:37 router1 mib2d[2905]: SNMP_TRAP_LINK_DOWN: ifIndex 82, ifAdminStatus up(1), ifOperStatus down(2), ifName at-1/0/0',
-      logLevel: 'error',
-    },
-    {
-      text:
-        'Apr 11 11:46:37 router1 mib2d[2905]: SNMP_TRAP_LINK_DOWN: ifIndex 82, ifAdminStatus up(1), ifOperStatus down(2), ifName at-1/0/0',
-      logLevel: 'warn',
-    },
-    {
-      text:
-        "Apr 11 10:32:22 router1 mgd[3606]: UI_DBASE_LOGOUT_EVENT: User 'barbara' exiting configuration mode",
-      logLevel: 'info',
-    },
-    {
-      text:
-        'Apr 11 11:46:37 router1 mib2d[2905]: SNMP_TRAP_LINK_DOWN: ifIndex 82, ifAdminStatus up(1), ifOperStatus down(2), ifName at-1/0/0',
-      logLevel: 'error',
-    },
-    {
-      text:
-        'Apr 11 11:46:37 router1 mib2d[2905]: SNMP_TRAP_LINK_DOWN: ifIndex 82, ifAdminStatus up(1), ifOperStatus down(2), ifName at-1/0/0',
-      logLevel: 'warn',
-    },
-  ];
+  const { messages } = useROS();
 
   return (
     <MainCard cardTitle="Logs">
@@ -69,13 +30,13 @@ const LogsCard: React.FC = () => {
         h="100%"
         overflow="scroll"
       >
-        {logs.map((log, index) => (
+        {messages.map((message: Message, index: number) => (
           <Text
             fontSize="xs"
-            color={logLevelToColor(log.logLevel)}
-            key={log.text + index}
+            color={logLevelToColor(message.severity)}
+            key={message.text + index}
           >
-            {log.text}
+            {message.time.toLocaleTimeString()} : {message.text}
           </Text>
         ))}
       </Box>

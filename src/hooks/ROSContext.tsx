@@ -6,9 +6,10 @@ import React, {
 } from 'react';
 import ROSLIB from 'roslib';
 
-type RosMessage = {
+export type Message = {
   severity: 'error' | 'info';
   text: string;
+  time: Date;
 };
 
 type TRosContext = {
@@ -16,9 +17,8 @@ type TRosContext = {
     ROS: ROSLIB.Ros | null;
     url: string;
     isConnected: boolean;
-    autoconnect: boolean;
-    topics: Array<string>;
-    listeners: Array<ROSLIB.Topic>;
+    topics: Array<ROSLIB.Topic>;
+    messages: Array<Message>;
   };
   setROS: Dispatch<SetStateAction<TRosContext>>;
 };
@@ -28,9 +28,8 @@ const initialContext: TRosContext = {
     ROS: null,
     url: 'ws://localhost:9090',
     isConnected: false,
-    autoconnect: false,
     topics: [],
-    listeners: [],
+    messages: [],
   },
   setROS: (): void => {
     throw new Error('setRos function must be overridden');

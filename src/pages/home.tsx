@@ -7,6 +7,7 @@ import JoystickCard from '../molecules/joystick-card';
 import CameraCard from '../molecules/camera-card';
 import LogsCard from '../molecules/logs-card';
 import { useROS } from '../hooks/ros.hook';
+import { useMountEffect } from '../utils/utils';
 
 const CardContainer = styled(Box)``;
 
@@ -41,15 +42,21 @@ const cards: CardsInfo[] = [
 ];
 
 const Home: React.FC = () => {
-  const { toggleConnection } = useROS();
-  toggleConnection();
+  const { handleConnect, isConnected } = useROS();
+
+  useMountEffect(() => {
+    if (!isConnected) {
+      handleConnect();
+    }
+  });
+
   return (
     <Grid
       p={2}
       gridTemplateAreas="
-    'leftTop center center rightTop'
-    'leftBottom center center rightBottom'
-    "
+  'leftTop center center rightTop'
+  'leftBottom center center rightBottom'
+  "
       gridTemplateColumns="1fr 1fr 1fr 1fr"
       gridTemplateRows="300px 300px"
       gridGap="10px"
