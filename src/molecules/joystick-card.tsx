@@ -24,12 +24,13 @@ const JoystickCard: React.FC = () => {
   };
 
   return (
-    <MainCard cardTitle="Joystick">
+    <MainCard cardTitle="Joystick" enabled={isConnected}>
       <Center h="80%">
         <Joystick
           size={150}
           baseColor="#CBD5E0"
           stickColor="#718096"
+          disabled={!isConnected}
           move={handleMove}
         />
       </Center>

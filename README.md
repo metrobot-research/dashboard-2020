@@ -10,7 +10,7 @@ The dashboard communicates with ROS via the [ros2-web-bridge](https://github.com
 ```shell script
 cd ~/Github # Go to your Github repos folder
 git clone https://github.com/RobotWebTools/ros2-web-bridge/ && cd ros2-web-bridge # Clone and go to the project
-# Source the ROS2 Workspace (On Ubuntu it's source ~/opt/ros/eloquent/setup.bash)
+# Source the ROS2 Workspace (On Ubuntu it's source /opt/ros/foxy/setup.bash)
 npm install # Install node modules
 npm run wsserver # Run the web server
 ```

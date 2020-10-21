@@ -14,14 +14,16 @@ const SensitivityCard: React.FC = () => {
   }
 
   const sendSensitivityUpdate = (sensitivity: number): void => {
-    const sensitivityMessage: ROSLIB.Message = {
-      data: sensitivity,
-    };
-    sensitivityTopic.publish(sensitivityMessage);
+    if (isConnected) {
+      const sensitivityMessage: ROSLIB.Message = {
+        data: sensitivity,
+      };
+      sensitivityTopic.publish(sensitivityMessage);
+    }
   };
 
   return (
-    <MainCard cardTitle="Joystick">
+    <MainCard cardTitle="Joystick" enabled={isConnected}>
       <Box h={10} />
       <SensitivitySlider onChange={sendSensitivityUpdate} />
       <Center>

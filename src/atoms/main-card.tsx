@@ -1,14 +1,16 @@
 import React, { FC, ReactElement } from 'react';
-import { Box, Flex } from '@chakra-ui/core';
+import { Box, Flex, Stack, Text, Tag, TagLabel } from '@chakra-ui/core';
 
 interface Props {
   cardTitle?: string;
   HeaderComponent?: ReactElement;
+  enabled?: boolean;
 }
 
 const MainCard: React.FC<Props> = ({
   children,
   cardTitle,
+  enabled = true,
   HeaderComponent,
 }) => {
   return (
@@ -30,7 +32,16 @@ const MainCard: React.FC<Props> = ({
         direction="row"
         as="h3"
       >
-        {cardTitle}
+        <Stack direction="row">
+          <Text> {cardTitle}</Text>
+          {!enabled ? (
+            <Tag colorScheme="red" borderRadius="full" h={2}>
+              <TagLabel>Disabled</TagLabel>
+            </Tag>
+          ) : (
+            <div />
+          )}
+        </Stack>
         {HeaderComponent !== null ? HeaderComponent : <Box />}
       </Flex>
       {children}

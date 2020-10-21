@@ -5,7 +5,6 @@ import { useROS } from '../hooks/ros.hook';
 const NavbarRight: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isConnected, toggleConnection } = useROS();
-  const robotStatus = 'Online';
 
   return (
     <Box>
@@ -16,7 +15,7 @@ const NavbarRight: React.FC = () => {
           size="lg"
           onClick={toggleConnection}
         >
-          Robot {robotStatus}
+          Robot {isConnected ? 'Online' : 'Offline'}
         </Tag>
         <Box width={3} />
         <Divider orientation="vertical" />

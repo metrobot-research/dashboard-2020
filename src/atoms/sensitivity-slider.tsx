@@ -9,6 +9,7 @@ import {
 type Props = {
   onChange(value: number): void;
   defaultValue?: number;
+  disabled?: boolean;
 };
 
 const SensitivitySlider: React.FC<Props> = ({
