@@ -100,7 +100,7 @@ function useROS(): Record<string, any> {
     }
   };
 
-  const handleDisconnect = () => {
+  const handleDisconnect = (): void => {
     try {
       if (ros.ROS !== null) {
         ros.ROS.close();
